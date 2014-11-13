@@ -12,9 +12,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.0.5-SNAPSHOT</serenity.version>
-        <serenity.maven.version>1.0.5-SNAPSHOT</serenity.maven.version>
-        <serenity.jbehave.version>1.0.4-SNAPSHOT</serenity.jbehave.version>
+        <serenity.version>1.0.5</serenity.version>
+        <serenity.maven.version>1.0.4</serenity.maven.version>
+        <serenity.jbehave.version>1.0.4</serenity.jbehave.version>
         <webdriver.driver>chrome</webdriver.driver>
     </properties>
 
@@ -133,6 +133,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.serenity-bdd</groupId>
+                        <artifactId>core</artifactId>
+                        <version>1.0.5</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
