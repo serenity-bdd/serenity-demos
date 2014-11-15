@@ -33,12 +33,12 @@ public class DisplayProductDetailsScenarioSteps {
     @When("I select item (\\d+)")
     public void whenISelectListingItem(int number) {
         ListingItem selectedListingItem = buyer.selects_listing(number);
-        Serenity.getCurrentSession().put(SELECTED_LISTING, selectedListingItem);
+        Serenity.setSessionVariable(SELECTED_LISTING).to(selectedListingItem);
     }
 
     @Then("I should see product description and price on the details page")
     public void thenIShouldSeeProductDescriptionAndPriceOnTheDetailsPage() {
-         ListingItem selectedListingItem = (ListingItem) Serenity.getCurrentSession().get(SELECTED_LISTING);
+         ListingItem selectedListingItem = (ListingItem) Serenity.sessionVariableCalled(SELECTED_LISTING);
          buyer.should_see_product_details_for(selectedListingItem);
     }
 
