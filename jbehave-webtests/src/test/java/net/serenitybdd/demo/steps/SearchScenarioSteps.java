@@ -1,14 +1,14 @@
-package net.thucydides.showcase.jbehave.steps;
+package net.serenitybdd.demo.steps;
 
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.steps.StepEventBus;
 import net.thucydides.core.util.Inflector;
-import net.thucydides.showcase.jbehave.steps.serenity.BuyerSteps;
+import net.serenitybdd.demo.steps.serenity.BuyerSteps;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import java.text.MessageFormat;
 import java.text.ParseException;
 
 public class SearchScenarioSteps {
@@ -20,12 +20,12 @@ public class SearchScenarioSteps {
         buyer.opens_home_page();
     }
 
-    @When("I search for '$keyword'")
+    @When("I search for '<article>'")
     public void searchByKeyword(String keyword) {
         buyer.searches_by_keyword(keyword);
     }
 
-    @Then("I should see only articles related to '$keyword'")
+    @Then("I should see only articles related to '<keyword>'")
     public void resultsForACategoryAndKeywordInARegion(String keyword) throws ParseException {
         buyer.should_see_results_summary_containing(keyword);
     }

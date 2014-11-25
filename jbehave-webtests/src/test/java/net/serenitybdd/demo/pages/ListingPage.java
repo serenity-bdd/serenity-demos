@@ -1,9 +1,9 @@
-package net.thucydides.showcase.jbehave.pages;
+package net.serenitybdd.demo.pages;
 
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
-import net.thucydides.showcase.jbehave.model.ListingItem;
+import net.serenitybdd.demo.model.ListingItem;
 
 /**
  * Created by john on 12/11/14.

@@ -5,5 +5,5 @@ I want buyers to be able to see details about a product
 
 Scenario: Display product details from the search list
 Given I have searched for 'Docking station'
-When I select item 1
+When I select a matching item
 Then I should see product description and price on the details page

@@ -1,13 +1,13 @@
-package net.thucydides.showcase.jbehave.steps.serenity;
+package net.serenitybdd.demo.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.showcase.jbehave.model.ListingItem;
-import net.thucydides.showcase.jbehave.model.OrderCostSummary;
-import net.thucydides.showcase.jbehave.pages.CartPage;
-import net.thucydides.showcase.jbehave.pages.HomePage;
-import net.thucydides.showcase.jbehave.pages.ListingPage;
-import net.thucydides.showcase.jbehave.pages.SearchResultsPage;
+import net.serenitybdd.demo.model.ListingItem;
+import net.serenitybdd.demo.model.OrderCostSummary;
+import net.serenitybdd.demo.pages.CartPage;
+import net.serenitybdd.demo.pages.HomePage;
+import net.serenitybdd.demo.pages.ListingPage;
+import net.serenitybdd.demo.pages.SearchResultsPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,7 +45,7 @@ public class BuyerSteps extends ScenarioSteps {
         assertThat(searchResultsPage.getResultSummary()).isEqualToIgnoringCase(expectedMessage);
     }
 
-    @Step
+    @Step("Select {0}th matching item in the list")
     public ListingItem selects_listing(int articleNumber) {
         return searchResultsPage.selectListing(articleNumber);
     }

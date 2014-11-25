@@ -1,12 +1,11 @@
-package net.thucydides.showcase.jbehave.pages;
+package net.serenitybdd.demo.pages;
 
 import net.thucydides.core.annotations.findby.By;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
-import net.thucydides.showcase.jbehave.model.ListingItem;
-import net.thucydides.showcase.jbehave.model.OrderCostSummary;
+import net.serenitybdd.demo.model.ListingItem;
+import net.serenitybdd.demo.model.OrderCostSummary;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package net.thucydides.showcase.jbehave;
+package net.serenitybdd.demo;
 
 import net.thucydides.jbehave.SerenityStory;
 

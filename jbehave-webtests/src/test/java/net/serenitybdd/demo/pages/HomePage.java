@@ -1,13 +1,8 @@
-package net.thucydides.showcase.jbehave.pages;
+package net.serenitybdd.demo.pages;
 
-import com.thoughtworks.selenium.Wait;
 import net.thucydides.core.annotations.DefaultUrl;
-import net.thucydides.core.annotations.findby.By;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
 @DefaultUrl("https://www.etsy.com")

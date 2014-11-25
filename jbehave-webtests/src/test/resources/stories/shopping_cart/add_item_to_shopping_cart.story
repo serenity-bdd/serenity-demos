@@ -1,11 +1,17 @@
 Narrative:
+In order to make the most appropriate purchase decisions
 As a buyer
-I want to be able to purchase items online
-So that I can get them faster
+I want to be able to place items I want to buy in a virtual cart before placing my order
 
-Scenario: Add item to cart
+Scenario: Show shipping cost for an item in the shopping cart
 Given I have searched for 'docking station'
-And I have selected item 4
+And I have selected a matching item
 When I add it to the cart
-Then the item should appear in the cart
-And the shipping cost should be included in the total price
+Then the shipping cost should be included in the total price
+
+Scenario: Calculate tax
+Given I have searched for 'docking station'
+And I have selected a matching item
+When I add it to the cart
+Then local taxes should be included in the total price
+

@@ -1,9 +1,9 @@
-package net.thucydides.showcase.jbehave.pages;
+package net.serenitybdd.demo.pages;
 
 
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
-import net.thucydides.showcase.jbehave.model.ListingItem;
+import net.serenitybdd.demo.model.ListingItem;
 import org.openqa.selenium.support.FindBy;
 
 import java.text.NumberFormat;

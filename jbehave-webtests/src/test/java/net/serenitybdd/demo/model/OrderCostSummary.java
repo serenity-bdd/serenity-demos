@@ -1,4 +1,4 @@
-package net.thucydides.showcase.jbehave.model;
+package net.serenitybdd.demo.model;
 
 /**
  * Created by john on 13/11/14.

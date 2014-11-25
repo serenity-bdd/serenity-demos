@@ -1,12 +1,12 @@
-package net.thucydides.showcase.jbehave.steps;
+package net.serenitybdd.demo.steps;
 
 import net.thucydides.core.Serenity;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.showcase.jbehave.model.ListingItem;
-import net.thucydides.showcase.jbehave.steps.serenity.BuyerSteps;
+import net.serenitybdd.demo.model.ListingItem;
+import net.serenitybdd.demo.steps.serenity.BuyerSteps;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import static net.thucydides.showcase.jbehave.model.SessionVariables.SELECTED_LISTING;
+import static net.serenitybdd.demo.model.SessionVariables.SELECTED_LISTING;
 
 /**
  * Created by john on 12/11/14.

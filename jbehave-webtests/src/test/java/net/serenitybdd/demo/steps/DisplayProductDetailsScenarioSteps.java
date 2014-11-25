@@ -1,16 +1,17 @@
-package net.thucydides.showcase.jbehave.steps;
+package net.serenitybdd.demo.steps;
 
 import net.thucydides.core.Serenity;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.showcase.jbehave.model.ListingItem;
-import net.thucydides.showcase.jbehave.steps.serenity.BuyerSteps;
+import net.serenitybdd.demo.model.ListingItem;
+import net.serenitybdd.demo.steps.serenity.BuyerSteps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import static net.thucydides.showcase.jbehave.model.SessionVariables.SELECTED_LISTING;
+import static net.serenitybdd.demo.model.SessionVariables.SELECTED_LISTING;
 
 public class DisplayProductDetailsScenarioSteps {
 
+    private final int ARBITRARY_SELECTED_ITEM_NUMBER = 5;
     @Steps
     BuyerSteps buyer;
 
@@ -20,10 +21,10 @@ public class DisplayProductDetailsScenarioSteps {
         buyer.searches_by_keyword(searchTerm);
     }
 
-    @Given("I have selected item $number")
-    @When("I select item $number")
-    public void whenISelectListingItem(int number) {
-        ListingItem selectedListingItem = buyer.selects_listing(number);
+    @Given("I have selected a matching item")
+    @When("I select a matching item")
+    public void whenISelectListingItem() {
+        ListingItem selectedListingItem = buyer.selects_listing(ARBITRARY_SELECTED_ITEM_NUMBER);
         Serenity.getCurrentSession().put(SELECTED_LISTING, selectedListingItem);
     }
 
