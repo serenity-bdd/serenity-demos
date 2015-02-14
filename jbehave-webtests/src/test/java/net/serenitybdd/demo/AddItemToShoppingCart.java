@@ -1,6 +1,7 @@
 package net.serenitybdd.demo;
 
-import net.thucydides.jbehave.SerenityStory;
+
+import net.serenitybdd.jbehave.SerenityStory;
 
 /**
  * Created by john on 13/11/14.

@@ -1,7 +1,5 @@
 package net.serenitybdd.demo;
 
-import net.thucydides.jbehave.SerenityStory;
+import net.serenitybdd.jbehave.SerenityStory;
 
-public class SearchByKeyword extends SerenityStory {
-    public SearchByKeyword() {}
-}
+public class SearchByKeyword extends SerenityStory {}

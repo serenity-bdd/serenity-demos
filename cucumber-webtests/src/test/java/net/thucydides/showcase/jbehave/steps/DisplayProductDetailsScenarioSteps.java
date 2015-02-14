@@ -3,7 +3,7 @@ package net.thucydides.showcase.jbehave.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.thucydides.core.Serenity;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.showcase.jbehave.model.ListingItem;
 import net.thucydides.showcase.jbehave.steps.serenity.BuyerSteps;

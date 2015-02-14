@@ -1,8 +1,8 @@
 package net.serenitybdd.demo.pages;
 
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
-import net.thucydides.core.pages.WebElementFacade;
 import net.serenitybdd.demo.model.ListingItem;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,9 +11,6 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static org.hamcrest.Matchers.anyOf;
-import static org.junit.Assert.assertThat;
 
 public class SearchResultsPage extends PageObject {
 

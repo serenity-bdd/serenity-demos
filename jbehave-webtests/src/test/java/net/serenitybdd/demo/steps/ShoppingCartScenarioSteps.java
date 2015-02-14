@@ -1,6 +1,6 @@
 package net.serenitybdd.demo.steps;
 
-import net.thucydides.core.Serenity;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.serenitybdd.demo.model.ListingItem;
 import net.serenitybdd.demo.steps.serenity.BuyerSteps;

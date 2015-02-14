@@ -1,5 +1,5 @@
 package net.serenitybdd.demo;
 
-import net.thucydides.jbehave.SerenityStory;
+import net.serenitybdd.jbehave.SerenityStory;
 
 public class DisplayProductDetails extends SerenityStory {}
