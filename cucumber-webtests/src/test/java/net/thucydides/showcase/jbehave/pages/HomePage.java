@@ -3,6 +3,7 @@ package net.thucydides.showcase.jbehave.pages;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
 @DefaultUrl("https://www.etsy.com")
@@ -25,5 +26,11 @@ public class HomePage extends PageObject {
         enterSearchTerms(shopName);
         waitFor(500).milliseconds();
         $(SHOP_SUGGESTION).click();
+    }
+
+    public void dismissLocationMessage() {
+        if (!findAll(By.cssSelector("input[value='Okay']")).isEmpty()) {
+            find(By.cssSelector("input[value='Okay']")).click();
+        }
     }
 }

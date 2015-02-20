@@ -21,7 +21,7 @@ public class SearchResultsPage extends PageObject {
         return $("#search-header h1").getText();
     }
 
-    Pattern searchResultSummaryPattern = Pattern.compile("We found ([\\d,]+) items!");
+    Pattern searchResultSummaryPattern = Pattern.compile("([\\d,]+) Results");
 
     public int getResultCount(){
         int resultCount = 0;
@@ -50,7 +50,10 @@ public class SearchResultsPage extends PageObject {
         String name = listingCard.findBy(".listing-title").getText();
         double price = Double.parseDouble(listingCard.findBy(".currency-value").getText());
 
-        listingCard.click();
+        listingCard.findBy("a").click();
+
+        waitForTextToAppear("Item Details");
+
         return new ListingItem(name, price);
     }
 }

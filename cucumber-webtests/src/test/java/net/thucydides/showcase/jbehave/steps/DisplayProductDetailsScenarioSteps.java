@@ -20,17 +20,7 @@ public class DisplayProductDetailsScenarioSteps {
         buyer.searches_by_keyword(searchTerm);
     }
 
-    @When("I have selected item $number")
-    public void whenIHaveSelectListingItem(int number) {
-        whenISelectListingItem(number);
-    }
-
-    @Given("I have selected item (\\d+)")
-    public void whenIHaveSelectedListingItem(int number) {
-        whenISelectListingItem(number);
-    }
-
-    @When("I select item (\\d+)")
+    @When("I (?:have selected|select) item (\\d+)")
     public void whenISelectListingItem(int number) {
         ListingItem selectedListingItem = buyer.selects_listing(number);
         Serenity.setSessionVariable(SELECTED_LISTING).to(selectedListingItem);

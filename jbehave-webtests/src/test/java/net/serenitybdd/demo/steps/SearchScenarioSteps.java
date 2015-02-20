@@ -1,7 +1,6 @@
 package net.serenitybdd.demo.steps;
 
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.steps.StepEventBus;
 import net.thucydides.core.util.Inflector;
 import net.serenitybdd.demo.steps.serenity.BuyerSteps;
 import org.jbehave.core.annotations.Alias;

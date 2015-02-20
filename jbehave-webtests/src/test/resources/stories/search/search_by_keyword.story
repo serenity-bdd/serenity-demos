@@ -10,7 +10,8 @@ Then I should see only articles related to '<keyword>'
 Examples:
 | article      | keyword |
 | wool scarf   | wool    |
-| cotton shirt | cottom    |
+| cotton shirt | cotton  |
+
 Scenario: Search by shop name
 Given I want to see articles from a particular shop
 When I search by shop for 'docksmith'

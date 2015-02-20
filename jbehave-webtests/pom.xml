@@ -12,9 +12,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.0.31</serenity.version>
-        <serenity.maven.version>1.0.31</serenity.maven.version>
-        <serenity.jbehave.version>1.0.15</serenity.jbehave.version>
+        <serenity.version>1.0.34</serenity.version>
+        <serenity.maven.version>1.0.34</serenity.maven.version>
+        <serenity.jbehave.version>1.0.17</serenity.jbehave.version>
         <webdriver.driver>chrome</webdriver.driver>
     </properties>
 
@@ -79,21 +79,12 @@
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.maven.version}</version>
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.google.inject</groupId>-->
-                        <!--<artifactId>guice</artifactId>-->
-                        <!--<version>3.0</version>-->
-                        <!--<scope>compile</scope>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
                 <executions>
                     <execution>
                         <id>serenity-reports</id>
                         <phase>post-integration-test</phase>
                         <goals>
                             <goal>aggregate</goal>
-                            <!--<goal>check</goal>-->
                         </goals>
                     </execution>
                 </executions>

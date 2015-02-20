@@ -4,12 +4,15 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.showcase.jbehave.model.ListingItem;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 /**
  * Created by john on 12/11/14.
  */
 public class ListingPage extends PageObject {
 
+    public static final String PRODUCT_OPTIONS_DROPDOWN = ".variation";
     @FindBy(xpath = "//*[@itemprop='name']")
     WebElementFacade name;
 
@@ -23,7 +26,20 @@ public class ListingPage extends PageObject {
     }
 
     public void addToCart() {
+        dismissLocationMessage();
         withAction().moveToElement($("#item-tabs")).perform();
         $(".add-to-cart-form button").click();
+    }
+
+    private void dismissLocationMessage() {
+        if (!findAll(By.cssSelector("input[value='Okay']")).isEmpty()) {
+            find(By.cssSelector("input[value='Okay']")).click();
+        }
+    }
+
+    public void selectOptionIfPresent() {
+        if (!findAll(By.cssSelector(PRODUCT_OPTIONS_DROPDOWN)).isEmpty()) {
+            $(PRODUCT_OPTIONS_DROPDOWN).selectByIndex(1);
+        }
     }
 }

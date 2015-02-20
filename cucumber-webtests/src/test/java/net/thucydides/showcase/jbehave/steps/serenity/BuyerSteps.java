@@ -28,6 +28,7 @@ public class BuyerSteps extends ScenarioSteps {
     public void searches_by_keyword(String keyword) {
         homePage.enterSearchTerms(keyword);
         homePage.search();
+        homePage.dismissLocationMessage();
     }
 
     @Step
@@ -59,6 +60,7 @@ public class BuyerSteps extends ScenarioSteps {
 
     @Step
     public void adds_current_listing_to_cart() {
+        listingPage.selectOptionIfPresent();
         listingPage.addToCart();
     }
 
@@ -74,10 +76,8 @@ public class BuyerSteps extends ScenarioSteps {
 
         double itemTotal = orderCostSummary.getItemTotal();
         double shipping = orderCostSummary.getShipping();
-        double totalCost = orderCostSummary.getTotalCost();
 
         assertThat(itemTotal).isEqualTo(selectedItem.getPrice());
         assertThat(shipping).isGreaterThan(0.0);
-        assertThat(totalCost).isCloseTo(itemTotal + shipping, Offset.offset(0.001));
     }
 }
