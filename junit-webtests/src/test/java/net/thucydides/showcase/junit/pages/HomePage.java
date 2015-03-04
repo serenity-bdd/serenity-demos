@@ -1,7 +1,6 @@
-package net.thucydides.showcase.jbehave.pages;
+package net.thucydides.showcase.junit.pages;
 
 import com.google.common.base.Function;
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
@@ -21,8 +20,17 @@ public class HomePage extends PageObject {
 
     public void enterSearchTerms(String keyword) {
         $("#search-query").type(keyword);
-        waitForKeywordToBeUpdatedTo(keyword);
-        Serenity.takeScreenshot();
+    }
+
+    public void search() {
+        searchButton.click();
+    }
+
+    public void searchForShopCalled(String shopName) {
+        enterSearchTerms(shopName);
+        waitForKeywordToBeUpdatedTo(shopName);
+        waitForAllTextToAppear("Etsy");
+        $(SHOP_SUGGESTION).click();
     }
 
     private void waitForKeywordToBeUpdatedTo(String keyword) {
@@ -39,16 +47,6 @@ public class HomePage extends PageObject {
                 return $("#search-query").getValue().equalsIgnoreCase(keyword);
             }
         };
-    }
-
-    public void search() {
-        searchButton.click();
-        Serenity.takeScreenshot();
-    }
-
-    public void searchForShopCalled(String shopName) {
-        enterSearchTerms(shopName);
-        $(SHOP_SUGGESTION).click();
     }
 
     public void dismissLocationMessage() {

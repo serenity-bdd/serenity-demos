@@ -1,14 +1,13 @@
-package net.serenitybdd.demo.steps.serenity;
+package net.thucydides.showcase.junit.steps.serenity;
 
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.serenitybdd.demo.model.ListingItem;
-import net.serenitybdd.demo.model.OrderCostSummary;
-import net.serenitybdd.demo.pages.CartPage;
-import net.serenitybdd.demo.pages.HomePage;
-import net.serenitybdd.demo.pages.ListingPage;
-import net.serenitybdd.demo.pages.SearchResultsPage;
+import net.thucydides.showcase.junit.model.ListingItem;
+import net.thucydides.showcase.junit.model.OrderCostSummary;
+import net.thucydides.showcase.junit.pages.CartPage;
+import net.thucydides.showcase.junit.pages.HomePage;
+import net.thucydides.showcase.junit.pages.ListingPage;
+import net.thucydides.showcase.junit.pages.SearchResultsPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -67,7 +66,7 @@ public class BuyerSteps extends ScenarioSteps {
     @Step
     public void should_see_item_in_cart(ListingItem selectedItem) {
         assertThat(cartPage.getOrderCostSummaries()
-                .stream().anyMatch(order -> order.getName().equals(selectedItem.getName()))).isTrue();
+                        .stream().anyMatch(order -> order.getName().equals(selectedItem.getName()))).isTrue();
     }
 
     @Step

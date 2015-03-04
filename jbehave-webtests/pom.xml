@@ -12,9 +12,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.0.34</serenity.version>
-        <serenity.maven.version>1.0.34</serenity.maven.version>
-        <serenity.jbehave.version>1.0.17</serenity.jbehave.version>
+        <serenity.version>1.0.37</serenity.version>
+        <serenity.maven.version>1.0.37</serenity.maven.version>
+        <serenity.jbehave.version>1.0.19</serenity.jbehave.version>
+        <serenity.cucumber.version>1.0.13</serenity.cucumber.version>
         <webdriver.driver>chrome</webdriver.driver>
     </properties>
 
@@ -28,6 +29,11 @@
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-jbehave</artifactId>
             <version>${serenity.jbehave.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-cucumber</artifactId>
+            <version>${serenity.cucumber.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -49,6 +55,33 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <inherited>true</inherited>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failFast>true</failFast>
+                    <rules>
+                        <DependencyConvergence></DependencyConvergence>
+                        <requireReleaseDeps>
+                            <onlyWhenRelease>true</onlyWhenRelease>
+                        </requireReleaseDeps>
+                        <requireJavaVersion>
+                            <version>${java.version}</version>
+                        </requireJavaVersion>
+                    </rules>
+                </configuration>
+            </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.18</version>

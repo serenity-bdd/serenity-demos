@@ -1,5 +1,6 @@
 package net.serenitybdd.demo.steps;
 
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.util.Inflector;
 import net.serenitybdd.demo.steps.serenity.BuyerSteps;
@@ -10,13 +11,17 @@ import org.jbehave.core.annotations.When;
 
 import java.text.ParseException;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SearchScenarioSteps {
     @Steps
     BuyerSteps buyer;
 
     @Given("I want to buy $article")
     public void buyerWantsToBuy(String article) {
+        Serenity.takeScreenshot();
         buyer.opens_home_page();
+        Serenity.takeScreenshot();
     }
 
     @When("I search for '<article>'")

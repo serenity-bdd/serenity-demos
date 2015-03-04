@@ -3,11 +3,14 @@ package net.thucydides.showcase.jbehave.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.util.Inflector;
 import net.thucydides.showcase.jbehave.steps.serenity.BuyerSteps;
 
 import java.text.ParseException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchScenarioSteps {
     @Steps
@@ -15,11 +18,13 @@ public class SearchScenarioSteps {
 
     @Given("I want to buy (.*)")
     public void buyerWantsToBuy(String article) {
+        Serenity.takeScreenshot();
         buyer.opens_home_page();
     }
 
     @When("I search for '(.*)'")
     public void searchByKeyword(String keyword) {
+        Serenity.takeScreenshot();
         buyer.searches_by_keyword(keyword);
     }
 
