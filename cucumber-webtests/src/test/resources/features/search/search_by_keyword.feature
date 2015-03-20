@@ -12,3 +12,13 @@ Feature: Search by keyword
     Given I want to see articles from a particular shop
     When I search by shop for 'docksmith'
     Then I should find 1 shop called 'docksmith'
+
+  Scenario Outline: Search for articles by keyword
+    Given I would like to buy a wool scarf
+    When I search for '<article>'
+    Then I should see only articles related to '<keyword>'
+  Examples:
+    | article        | keyword |
+    | wool scarf     | wool    |
+    | cotton shirt   | cotton  |
+    | leather jacket | leather |

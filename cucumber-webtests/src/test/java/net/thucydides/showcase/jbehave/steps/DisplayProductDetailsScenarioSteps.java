@@ -32,4 +32,26 @@ public class DisplayProductDetailsScenarioSteps {
          buyer.should_see_product_details_for(selectedListingItem);
     }
 
+    @Then("I should see a product rating")
+    public void shouldSeeProductRating() {
+        buyer.should_see_product_rating();
+    }
+
+    @Then("I should see social media links")
+    public void shouldSeeSocialMediaLinks() {
+        buyer.should_see_facebook_link();
+        buyer.should_see_twitter_link();
+        buyer.should_see_tumblr_link();
+    }
+
+    @When("I view the currency options")
+    public void viewCurrencyOptions() {
+        buyer.view_currency_options();
+    }
+
+
+    @Then("I should see a list of possible currencies")
+    public void shouldSeePossibleCurrencies() {
+        buyer.currency_options_include("AUD", "USD", "GBP", "EUR");
+    }
 }

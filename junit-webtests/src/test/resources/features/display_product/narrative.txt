@@ -1,0 +1,5 @@
+Feature: Display product
+
+In order to decide if I want to make a purchase
+As a buyer
+I want to be able to see details about a product

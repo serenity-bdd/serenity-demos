@@ -12,8 +12,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.0.37</serenity.version>
+        <serenity.version>1.0.39-SNAPSHOT</serenity.version>
         <serenity.maven.version>1.0.37</serenity.maven.version>
+        <tags></tags>
     </properties>
 
     <!-- Define the Bintray repos for convenience -->
@@ -90,6 +91,9 @@
                     </includes>
                     <reuseForks>true</reuseForks>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <systemPropertyVariables>
+                        <tags>${tags}</tags>
+                    </systemPropertyVariables>
                 </configuration>
                 <executions>
                     <execution>

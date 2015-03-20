@@ -1,5 +1,6 @@
 package net.thucydides.showcase.jbehave.steps;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.serenitybdd.core.Serenity;
@@ -7,6 +8,7 @@ import net.thucydides.core.annotations.Steps;
 import net.thucydides.showcase.jbehave.model.ListingItem;
 import net.thucydides.showcase.jbehave.steps.serenity.BuyerSteps;
 import static net.thucydides.showcase.jbehave.model.SessionVariables.SELECTED_LISTING;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by john on 12/11/14.
@@ -32,6 +34,7 @@ public class ShoppingCartScenarioSteps {
         ListingItem selectedItem = (ListingItem) Serenity.getCurrentSession().get(SELECTED_LISTING);
         buyer.should_see_total_including_shipping_for(selectedItem);
     }
+
 
 
 }

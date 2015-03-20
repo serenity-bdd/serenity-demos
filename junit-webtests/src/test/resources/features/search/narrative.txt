@@ -1,0 +1,5 @@
+Feature: Search
+
+In order to find stuff I would like to
+As a buyer
+I want to be able to search for interesting things

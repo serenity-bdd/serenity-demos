@@ -83,4 +83,34 @@ public class BuyerSteps extends ScenarioSteps {
         assertThat(itemTotal).isEqualTo(selectedItem.getPrice());
         assertThat(shipping).isGreaterThan(0.0);
     }
+
+    @Step
+    public void should_see_product_rating() {
+        assertThat(listingPage.getRating()).isGreaterThan(0);
+    }
+
+    @Step
+    public void should_see_twitter_link() {
+        listingPage.twitterIcon().shouldBeVisible();
+    }
+
+    @Step
+    public void should_see_tumblr_link() {
+        listingPage.tumblrIcon().shouldBeVisible();
+    }
+
+    @Step
+    public void should_see_facebook_link() {
+        listingPage.facebookIcon().shouldBeVisible();
+    }
+
+    @Step
+    public void view_currency_options() {
+        listingPage.viewCurrencyOptions();
+    }
+
+    @Step
+    public void currency_options_include(String... currencies) {
+        assertThat(listingPage.getCurrencies()).contains(currencies);
+    }
 }

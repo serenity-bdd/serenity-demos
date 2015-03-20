@@ -16,7 +16,7 @@ public class SearchScenarioSteps {
     @Steps
     BuyerSteps buyer;
 
-    @Given("I want to buy (.*)")
+    @Given("I (?:want|would like) to buy (.*)")
     public void buyerWantsToBuy(String article) {
         Serenity.takeScreenshot();
         buyer.opens_home_page();
