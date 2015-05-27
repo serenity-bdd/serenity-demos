@@ -12,9 +12,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.0.42-SNAPSHOT</serenity.version>
-        <serenity.maven.version>1.0.37</serenity.maven.version>
-        <serenity.cucumber.version>1.0.13</serenity.cucumber.version>
+        <serenity.version>1.0.47</serenity.version>
+        <serenity.maven.version>1.0.47</serenity.maven.version>
+        <serenity.cucumber.version>1.0.15</serenity.cucumber.version>
     </properties>
 
     <!-- Define the Bintray repos for convenience -->
@@ -107,7 +107,7 @@
                 <version>2.18</version>
                 <configuration>
                     <includes>
-                        <include>**/jbehave/*.java</include>
+                        <include>**/cucumber/*.java</include>
                     </includes>
                     <reuseForks>true</reuseForks>
                     <!--<forkCount>2</forkCount>-->

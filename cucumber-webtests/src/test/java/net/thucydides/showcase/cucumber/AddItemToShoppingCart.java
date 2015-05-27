@@ -1,4 +1,4 @@
-package net.thucydides.showcase.jbehave;
+package net.thucydides.showcase.cucumber;
 
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;

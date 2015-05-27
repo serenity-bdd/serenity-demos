@@ -1,4 +1,4 @@
-package net.thucydides.showcase.jbehave.steps;
+package net.thucydides.showcase.cucumber.steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -6,7 +6,7 @@ import cucumber.api.java.en.When;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.util.Inflector;
-import net.thucydides.showcase.jbehave.steps.serenity.BuyerSteps;
+import net.thucydides.showcase.cucumber.steps.serenity.BuyerSteps;
 
 import java.text.ParseException;
 
@@ -18,13 +18,11 @@ public class SearchScenarioSteps {
 
     @Given("I (?:want|would like) to buy (.*)")
     public void buyerWantsToBuy(String article) {
-        Serenity.takeScreenshot();
         buyer.opens_home_page();
     }
 
     @When("I search for '(.*)'")
     public void searchByKeyword(String keyword) {
-        Serenity.takeScreenshot();
         buyer.searches_by_keyword(keyword);
     }
 
@@ -40,6 +38,7 @@ public class SearchScenarioSteps {
 
     @When("I search by shop for '(.*)'")
     public void whenISearchByShopFor(String shopName) {
+        buyer.should_see_nonexistant_field();
         buyer.searches_for_shop_called(shopName);
     }
 

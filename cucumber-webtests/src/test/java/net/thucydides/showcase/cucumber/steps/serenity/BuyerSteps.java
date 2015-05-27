@@ -1,15 +1,14 @@
-package net.thucydides.showcase.jbehave.steps.serenity;
+package net.thucydides.showcase.cucumber.steps.serenity;
 
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import net.thucydides.showcase.jbehave.model.ListingItem;
-import net.thucydides.showcase.jbehave.model.OrderCostSummary;
-import net.thucydides.showcase.jbehave.pages.CartPage;
-import net.thucydides.showcase.jbehave.pages.HomePage;
-import net.thucydides.showcase.jbehave.pages.ListingPage;
-import net.thucydides.showcase.jbehave.pages.SearchResultsPage;
-import org.assertj.core.data.Offset;
+import net.thucydides.showcase.cucumber.model.ListingItem;
+import net.thucydides.showcase.cucumber.model.OrderCostSummary;
+import net.thucydides.showcase.cucumber.pages.CartPage;
+import net.thucydides.showcase.cucumber.pages.HomePage;
+import net.thucydides.showcase.cucumber.pages.ListingPage;
+import net.thucydides.showcase.cucumber.pages.SearchResultsPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,16 +27,13 @@ public class BuyerSteps extends ScenarioSteps {
     @Step
     public void searches_by_keyword(String keyword) {
         homePage.enterSearchTerms(keyword);
-        Serenity.takeScreenshot();
         homePage.search();
-        Serenity.takeScreenshot();
         homePage.dismissLocationMessage();
     }
 
     @Step
     public void should_see_results_summary_containing(String keyword) {
         assertThat(searchResultsPage.getSearchHeader()).containsIgnoringCase(keyword);
-        assertThat(searchResultsPage.getResultCount()).isGreaterThan(0);
     }
 
     @Step
@@ -104,13 +100,14 @@ public class BuyerSteps extends ScenarioSteps {
         listingPage.facebookIcon().shouldBeVisible();
     }
 
-    @Step
-    public void view_currency_options() {
-        listingPage.viewCurrencyOptions();
-    }
 
     @Step
-    public void currency_options_include(String... currencies) {
-        assertThat(listingPage.getCurrencies()).contains(currencies);
+    public void should_see_nonexistant_field() {
+        assertThat(listingPage.clickImaginaryButton()).isFalse();
+    }
+
+
+    public void filters_by_local_region() {
+        searchResultsPage.filterByLocalRegion();
     }
 }

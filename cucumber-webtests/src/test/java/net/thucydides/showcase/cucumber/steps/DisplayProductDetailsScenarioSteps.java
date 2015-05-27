@@ -1,23 +1,25 @@
-package net.thucydides.showcase.jbehave.steps;
+package net.thucydides.showcase.cucumber.steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
-import net.thucydides.showcase.jbehave.model.ListingItem;
-import net.thucydides.showcase.jbehave.steps.serenity.BuyerSteps;
-import static net.thucydides.showcase.jbehave.model.SessionVariables.SELECTED_LISTING;
+import net.thucydides.showcase.cucumber.model.ListingItem;
+import net.thucydides.showcase.cucumber.steps.serenity.BuyerSteps;
+import static net.thucydides.showcase.cucumber.model.SessionVariables.SELECTED_LISTING;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class DisplayProductDetailsScenarioSteps {
 
     @Steps
     BuyerSteps buyer;
 
-    @Given("I have searched for '(.*)'")
+    @Given("I have searched for '(.*)' in my region")
     public void givenIHaveSearchedFor(String searchTerm) {
         buyer.opens_home_page();
         buyer.searches_by_keyword(searchTerm);
+        buyer.filters_by_local_region();
     }
 
     @When("I (?:have selected|select) item (\\d+)")
@@ -42,16 +44,5 @@ public class DisplayProductDetailsScenarioSteps {
         buyer.should_see_facebook_link();
         buyer.should_see_twitter_link();
         buyer.should_see_tumblr_link();
-    }
-
-    @When("I view the currency options")
-    public void viewCurrencyOptions() {
-        buyer.view_currency_options();
-    }
-
-
-    @Then("I should see a list of possible currencies")
-    public void shouldSeePossibleCurrencies() {
-        buyer.currency_options_include("AUD", "USD", "GBP", "EUR");
     }
 }

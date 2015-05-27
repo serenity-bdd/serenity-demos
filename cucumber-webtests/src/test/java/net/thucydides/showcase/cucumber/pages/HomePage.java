@@ -1,4 +1,4 @@
-package net.thucydides.showcase.jbehave.pages;
+package net.thucydides.showcase.cucumber.pages;
 
 import com.google.common.base.Function;
 import net.serenitybdd.core.Serenity;
@@ -21,8 +21,8 @@ public class HomePage extends PageObject {
 
     public void enterSearchTerms(String keyword) {
         $("#search-query").type(keyword);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitForPresenceOf(By.xpath("//div[@class='as-suggestion'][contains(.,'" + keyword.toLowerCase() + "')]"));
         waitForKeywordToBeUpdatedTo(keyword);
-        Serenity.takeScreenshot();
     }
 
     private void waitForKeywordToBeUpdatedTo(String keyword) {

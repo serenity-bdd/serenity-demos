@@ -1,4 +1,4 @@
-package net.thucydides.showcase.jbehave.model;
+package net.thucydides.showcase.cucumber.model;
 
 /**
  * Created by john on 13/11/14.

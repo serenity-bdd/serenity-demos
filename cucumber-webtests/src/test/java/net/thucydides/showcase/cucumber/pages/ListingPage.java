@@ -1,14 +1,13 @@
-package net.thucydides.showcase.jbehave.pages;
+package net.thucydides.showcase.cucumber.pages;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementState;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
-import net.thucydides.showcase.jbehave.model.ListingItem;
+import net.thucydides.showcase.cucumber.model.ListingItem;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -86,16 +85,17 @@ public class ListingPage extends PageObject {
         return withTimeoutOf(5, TimeUnit.SECONDS).waitFor(facebookIcon);
     }
 
-    public void viewCurrencyOptions() {
-        $(".currency-code").click();
-        currencyTabHeader.waitUntilVisible();
+    public boolean clickImaginaryButton() {
+        try {
+            $(".does-not-exist").click();
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
     }
 
-    public List<String> getCurrencies() {
-        List<WebElementFacade> currencies = withTimeoutOf(5, TimeUnit.SECONDS).waitFor(currencyTab).thenFindAll(".currency-code");
-        return currencies.stream()
-                .map(WebElementFacade::getText)
-                .collect(Collectors.toList());
+    public void waitForTooLong() {
 
+        withTimeoutOf(2, TimeUnit.SECONDS).find(By.cssSelector("#does-not-exist"));
     }
 }

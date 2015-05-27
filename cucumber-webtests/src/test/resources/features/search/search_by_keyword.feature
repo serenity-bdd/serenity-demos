@@ -1,3 +1,5 @@
+@component:ui
+@version:Release-2
 Feature: Search by keyword
   In order for buyers to find what they are looking for more efficiently
   As a seller
@@ -13,12 +15,11 @@ Feature: Search by keyword
     When I search by shop for 'docksmith'
     Then I should find 1 shop called 'docksmith'
 
-  Scenario Outline: Search for articles by keyword
-    Given I would like to buy a wool scarf
+  Scenario Outline: Search for many articles by keyword
+    Given I would like to buy a <article>
     When I search for '<article>'
     Then I should see only articles related to '<keyword>'
   Examples:
     | article        | keyword |
     | wool scarf     | wool    |
     | cotton shirt   | cotton  |
-    | leather jacket | leather |
