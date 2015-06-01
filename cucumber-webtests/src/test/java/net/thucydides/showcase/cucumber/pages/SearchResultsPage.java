@@ -18,6 +18,9 @@ public class SearchResultsPage extends PageObject {
     @FindBy(css="#search-header .result-count")
     WebElementFacade resultCountSummary;
 
+    @FindBy(css=".primary-actions .btn-primary")
+    WebElementFacade regionalSettingsSaveButton;
+
     public String getSearchHeader() {
         return $(".float-left .strong").getText();
     }
@@ -51,10 +54,8 @@ public class SearchResultsPage extends PageObject {
     }
 
     public void filterByLocalRegion() {
-        List<WebElementFacade> locationOptions = findAll("//input[@type='radio'][@name='shop_location']");
-        if (locationOptions.size() > 1) {
-            locationOptions.get(1).click();
-            waitForTextToAppear("Choose a custom location");
+        if (containsText("We'd like to set these regional settings for you")) {
+            regionalSettingsSaveButton.click();
         }
     }
 }

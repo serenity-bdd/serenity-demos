@@ -43,7 +43,6 @@ public class HomePage extends PageObject {
 
     public void search() {
         searchButton.click();
-        Serenity.takeScreenshot();
     }
 
     public void searchForShopCalled(String shopName) {

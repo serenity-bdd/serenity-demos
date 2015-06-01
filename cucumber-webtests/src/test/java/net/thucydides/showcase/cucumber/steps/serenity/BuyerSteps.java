@@ -107,6 +107,7 @@ public class BuyerSteps extends ScenarioSteps {
     }
 
 
+    @Step
     public void filters_by_local_region() {
         searchResultsPage.filterByLocalRegion();
     }
