@@ -1,15 +1,18 @@
 package net.serenitybdd.demo.pages;
 
 import net.serenitybdd.core.annotations.findby.By;
-import net.thucydides.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.demo.model.ListingItem;
 import net.serenitybdd.demo.model.OrderCostSummary;
+import net.thucydides.core.pages.PageObject;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Created by john on 12/11/14.
+ */
 public class CartPage extends PageObject {
 
     private static ListingItem costSummaryToListingItem(OrderCostSummary orderCostSummary) {

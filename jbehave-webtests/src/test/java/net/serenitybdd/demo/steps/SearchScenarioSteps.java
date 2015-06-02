@@ -25,11 +25,13 @@ public class SearchScenarioSteps {
     }
 
     @When("I search for '<article>'")
-    public void searchByKeyword(String keyword) {
-        buyer.searches_by_keyword(keyword);
+    @Alias("I search for '$article'")
+    public void searchByKeyword(String article) {
+        buyer.searches_by_keyword(article);
     }
 
     @Then("I should see only articles related to '<keyword>'")
+    @Alias("I should see only articles related to '$keyword'")
     public void resultsForACategoryAndKeywordInARegion(String keyword) throws ParseException {
         buyer.should_see_results_summary_containing(keyword);
     }

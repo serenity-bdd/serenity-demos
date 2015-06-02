@@ -1,10 +1,14 @@
 package net.serenitybdd.demo.pages;
 
+import com.google.common.base.Function;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 @DefaultUrl("https://www.etsy.com")
 public class HomePage extends PageObject {
@@ -16,6 +20,24 @@ public class HomePage extends PageObject {
 
     public void enterSearchTerms(String keyword) {
         $("#search-query").type(keyword);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitForPresenceOf(By.xpath("//div[@class='as-suggestion'][contains(.,'" + keyword.toLowerCase() + "')]"));
+        waitForKeywordToBeUpdatedTo(keyword);
+    }
+
+    private void waitForKeywordToBeUpdatedTo(String keyword) {
+        waitForCondition()
+                .withTimeout(5, TimeUnit.SECONDS)
+                .pollingEvery(250,TimeUnit.MILLISECONDS)
+                .until(keywordFieldIsUpdatedTo(keyword));
+    }
+
+    private Function<? super WebDriver, Boolean> keywordFieldIsUpdatedTo(String keyword) {
+        return new Function<WebDriver, Boolean>() {
+            @Override
+            public Boolean apply(WebDriver webDriver) {
+                return $("#search-query").getValue().equalsIgnoreCase(keyword);
+            }
+        };
     }
 
     public void search() {
@@ -24,7 +46,6 @@ public class HomePage extends PageObject {
 
     public void searchForShopCalled(String shopName) {
         enterSearchTerms(shopName);
-        waitFor(500).milliseconds();
         $(SHOP_SUGGESTION).click();
     }
 
@@ -34,4 +55,3 @@ public class HomePage extends PageObject {
         }
     }
 }
-
