@@ -1,5 +1,6 @@
 package net.thucydides.showcase.junit.steps.serenity;
 
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.showcase.junit.model.ListingItem;
@@ -33,7 +34,6 @@ public class BuyerSteps extends ScenarioSteps {
     @Step
     public void should_see_results_summary_containing(String keyword) {
         assertThat(searchResultsPage.getSearchHeader()).containsIgnoringCase(keyword);
-        assertThat(searchResultsPage.getResultCount()).isGreaterThan(0);
     }
 
     @Step
@@ -66,7 +66,7 @@ public class BuyerSteps extends ScenarioSteps {
     @Step
     public void should_see_item_in_cart(ListingItem selectedItem) {
         assertThat(cartPage.getOrderCostSummaries()
-                        .stream().anyMatch(order -> order.getName().equals(selectedItem.getName()))).isTrue();
+                .stream().anyMatch(order -> order.getName().equals(selectedItem.getName()))).isTrue();
     }
 
     @Step
@@ -78,5 +78,37 @@ public class BuyerSteps extends ScenarioSteps {
 
         assertThat(itemTotal).isEqualTo(selectedItem.getPrice());
         assertThat(shipping).isGreaterThan(0.0);
+    }
+
+    @Step
+    public void should_see_product_rating() {
+        assertThat(listingPage.getRating()).isGreaterThan(0);
+    }
+
+    @Step
+    public void should_see_twitter_link() {
+        listingPage.twitterIcon().shouldBeVisible();
+    }
+
+    @Step
+    public void should_see_tumblr_link() {
+        listingPage.tumblrIcon().shouldBeVisible();
+    }
+
+    @Step
+    public void should_see_facebook_link() {
+        listingPage.facebookIcon().shouldBeVisible();
+    }
+
+
+    @Step
+    public void should_see_nonexistant_field() {
+        assertThat(listingPage.clickImaginaryButton()).isFalse();
+    }
+
+
+    @Step
+    public void filters_by_local_region() {
+        searchResultsPage.filterByLocalRegion();
     }
 }

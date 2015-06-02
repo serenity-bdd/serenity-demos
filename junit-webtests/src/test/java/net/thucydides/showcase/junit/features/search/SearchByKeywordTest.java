@@ -31,7 +31,7 @@ public class SearchByKeywordTest {
         buyer.should_see_results_summary_containing("wool");
     }
 
-    @Test
+    @Test//(timeout = 100)
     public void search_for_articles_by_shop_name() {
         buyer.opens_home_page();
         buyer.searches_for_shop_called("docksmith");
