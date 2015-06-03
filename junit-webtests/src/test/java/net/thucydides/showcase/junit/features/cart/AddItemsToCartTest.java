@@ -24,6 +24,7 @@ public class AddItemsToCartTest {
         // GIVEN
         buyer.opens_home_page();
         buyer.searches_by_keyword("docking station");
+        buyer.filters_by_local_region();
 
         // WHEN
         ListingItem selectedItem = buyer.selects_listing(2);
