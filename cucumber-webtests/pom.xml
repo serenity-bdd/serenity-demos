@@ -117,6 +117,7 @@
                 <version>2.18</version>
                 <configuration>
                     <includes>
+                        <include>**/cucumber/junit/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
                     <reuseForks>true</reuseForks>
