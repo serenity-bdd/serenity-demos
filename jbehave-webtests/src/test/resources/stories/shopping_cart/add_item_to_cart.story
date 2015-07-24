@@ -1,3 +1,4 @@
+Add an item to the shopping cart
 Narrative:
 In order to make the most appropriate purchase decisions
 As a buyer

@@ -1,5 +1,6 @@
 @component:ui
 @version:Release-2
+@issue:ETSY-102
 Feature: Search by keyword
   In order for buyers to find what they are looking for more efficiently
   As a seller
