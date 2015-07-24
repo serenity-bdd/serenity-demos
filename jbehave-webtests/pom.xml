@@ -12,8 +12,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.0.49</serenity.version>
-        <serenity.maven.version>1.0.49</serenity.maven.version>
+        <serenity.version>1.0.65-SNAPSHOT</serenity.version>
+        <serenity.maven.version>1.0.58</serenity.maven.version>
         <serenity.jbehave.version>1.0.23</serenity.jbehave.version>
         <webdriver.driver>phantomjs</webdriver.driver>
     </properties>
@@ -117,6 +117,13 @@
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.maven.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.serenity-bdd</groupId>
+                        <artifactId>serenity-core</artifactId>
+                        <version>${serenity.version}</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <id>serenity-reports</id>

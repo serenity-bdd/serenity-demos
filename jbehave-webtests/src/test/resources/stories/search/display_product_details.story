@@ -1,3 +1,8 @@
+Display detailed information about a product
+
+Meta:
+@tag component:UI
+
 Narrative:
 In order to encourage buyers to make a purchase
 As a seller

@@ -3,6 +3,9 @@ In order for buyers to find what they are looking for more efficiently
 As a seller
 I want buyers to be able to search for articles by keywords
 
+Meta:
+@tag component:service
+
 Scenario: Search for articles by keyword
 Given I want to buy a wool scarf
 When I search for 'wool'

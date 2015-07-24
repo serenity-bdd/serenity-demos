@@ -1,6 +1,7 @@
 @version:Release-1
 @version:Sprint-1.1
-Feature: Add item to shopping cart
+@issue:ETSY-104
+Feature: Add an item to the shopping cart
   As a buyer
   I want to be able to purchase items online
   So that I can get them faster

@@ -4,6 +4,9 @@ As a store owner
 I want to add a new pet to the catalog
 
 Scenario: Add a dog
+Meta:
+@tag component:UI
+
 Given I have the following pet:
 |name | status    |
 |Fido | available |
