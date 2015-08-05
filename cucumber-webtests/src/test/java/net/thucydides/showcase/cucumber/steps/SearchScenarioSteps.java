@@ -3,14 +3,11 @@ package net.thucydides.showcase.cucumber.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.util.Inflector;
 import net.thucydides.showcase.cucumber.steps.serenity.BuyerSteps;
 
 import java.text.ParseException;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchScenarioSteps {
     @Steps
@@ -44,8 +41,7 @@ public class SearchScenarioSteps {
 
     @Then("I should find (\\d+) (?:shop|shops) called '(.*)'")
     public void thenIShouldFindShopsCall(int count, String shopName) {
-        String expectedMessage = String.format("%d %s found for %s", count, pluralized(count,"shop"),shopName);
-        buyer.should_see_shop_search_result_summary_of(expectedMessage);
+        buyer.should_see_shop_search_result_summary_of(count, shopName);
     }
 
     private String pluralized(int count, String word) {

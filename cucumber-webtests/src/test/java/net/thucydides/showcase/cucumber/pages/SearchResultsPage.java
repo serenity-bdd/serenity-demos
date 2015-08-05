@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SearchResultsPage extends PageObject {
@@ -44,7 +43,7 @@ public class SearchResultsPage extends PageObject {
         WebElementFacade listingCard = listingCards.get(0);
         String name = listingCard.findBy(".card-meta-row").getText();
         double price = Double.parseDouble(listingCard.findBy(".card-price").getText().split("\\s")[0]
-                                                                           .replace("$","").replace(",",""));
+                                                                           .replace("$","").replace(",","."));
 
         listingCard.findBy(By.tagName("a")).click();
 
