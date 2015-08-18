@@ -20,8 +20,12 @@ public class HomePage extends PageObject {
 
     private final static String SHOP_SUGGESTION = "//div[@class='as-suggestion' and contains(.,'find shop names')]";
 
+    @FindBy(xpath = "//div[@class='as-suggestion']")
+    WebElementFacade suggestionEntry;
+
     public void enterSearchTerms(String keyword) {
         $("#search-query").type(keyword);
+        withTimeoutOf(10, TimeUnit.SECONDS).waitFor(suggestionEntry).shouldBeVisible();
         withTimeoutOf(10, TimeUnit.SECONDS).waitForPresenceOf(By.xpath("//div[@class='as-suggestion'][contains(.,'" + keyword.toLowerCase() + "')]"));
         waitForKeywordToBeUpdatedTo(keyword);
     }

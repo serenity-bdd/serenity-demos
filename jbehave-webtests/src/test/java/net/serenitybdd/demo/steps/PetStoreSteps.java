@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Random;
 
 import static net.serenitybdd.rest.SerenityRest.rest;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 /**
@@ -28,6 +29,7 @@ public class PetStoreSteps {
     public void i_have_the_following_pets(ExamplesTable petsTable) {
 
         this.pets = Lists.newArrayList();
+
 
         for(Map<String, String> petRow : petsTable.getRows()) {
             this.pets.add(new Pet(petRow.get("status"), petRow.get("name")));

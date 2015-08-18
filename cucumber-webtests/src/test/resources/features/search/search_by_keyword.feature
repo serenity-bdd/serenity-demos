@@ -24,3 +24,6 @@ Feature: Search by keyword
     | article        | keyword |
     | wool scarf     | wool    |
     | cotton shirt   | cotton  |
+
+  @manual
+  Scenario: Should respect standard look and feel

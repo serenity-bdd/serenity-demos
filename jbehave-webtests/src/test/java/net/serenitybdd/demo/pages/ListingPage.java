@@ -1,5 +1,6 @@
 package net.serenitybdd.demo.pages;
 
+import com.google.common.base.Splitter;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.pages.WebElementState;
@@ -44,8 +45,13 @@ public class ListingPage extends PageObject {
 
     public ListingItem getDisplayedListing() {
         String listingName = name.getText();
-        double listingPrice = Double.parseDouble(price.getText());
+        double listingPrice = Double.parseDouble(numericalValueIn(price.getText()));
         return new ListingItem(listingName, listingPrice);
+    }
+
+    private String numericalValueIn(String text) {
+        text = text.replace("$","").replace("€","").replace("£","");
+        return Splitter.on(" ").trimResults().splitToList(text).get(0);
     }
 
     public void addToCart() {
@@ -71,7 +77,7 @@ public class ListingPage extends PageObject {
     }
 
     public Double getRating() {
-        return Double.parseDouble(StringUtils.strip(rating.getText().replace(",","."), "()"));
+        return Double.parseDouble(StringUtils.strip(rating.getText().replace(",", "."), "()"));
     }
 
     public WebElementState twitterIcon() {
@@ -97,8 +103,4 @@ public class ListingPage extends PageObject {
         }
     }
 
-    public void waitForTooLong() {
-
-        withTimeoutOf(2, TimeUnit.SECONDS).find(By.cssSelector("#does-not-exist"));
-    }
 }

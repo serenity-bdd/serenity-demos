@@ -36,7 +36,14 @@ public class BuyerSteps extends ScenarioSteps {
         assertThat(searchResultsPage.getSearchHeader()).containsIgnoringCase(keyword);
     }
 
-    @Step
+    private final String siteName = "Etsy";
+
+    @Override
+    public String toString() {
+        return "Some buyer";
+    }
+
+    @Step("#this searches for a shop called {0} on the #siteName website")
     public void searches_for_shop_called(String shopName) {
         homePage.searchForShopCalled(shopName);
     }

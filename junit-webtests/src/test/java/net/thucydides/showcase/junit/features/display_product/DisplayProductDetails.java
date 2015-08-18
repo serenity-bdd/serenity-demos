@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-public class DisplayProductDetailsTest {
+@Issue("MYPROJ-104")
+public class DisplayProductDetails {
     @Managed
     WebDriver driver;
 

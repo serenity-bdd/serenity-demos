@@ -1,7 +1,8 @@
-package net.thucydides.showcase.junit.features.petstore;
+package net.thucydides.showcase.junit.features.wishlist;
 
 
 import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.showcase.junit.model.Pet;
 import net.thucydides.showcase.junit.steps.serenity.PetStoreSteps;
@@ -9,7 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SerenityRunner.class)
-public class AddAPetToThePetStoreTest {
+@Issue("MYPROJ-101")
+public class AddAPetToThePetStore {
 
     @Steps
     PetStoreSteps petStore;

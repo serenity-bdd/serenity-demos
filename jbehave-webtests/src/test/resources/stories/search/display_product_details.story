@@ -14,6 +14,9 @@ When I select item 1
 Then I should see product description and price on the details page
 
 Scenario: Display social media links for a product
+Meta:
+@manual
+
 Given I have searched for 'Docking station' in my region
 When I select item 1
 Then I should see social media links
