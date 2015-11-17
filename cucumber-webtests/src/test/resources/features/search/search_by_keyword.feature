@@ -14,11 +14,11 @@ Feature: Search by keyword
   Scenario Outline: Search by shop name
     Given I want to see articles from a particular shop
     When I search by shop for '<shopname>'
-    Then I should find 1 shop called '<shopname_2>'
+    Then I should find 1 shop called '<shopname>'
   Examples:
-    | shopname      | shopname_2    |
-    | agdesignworks | agdesignworks |
-    | docksmith     | docksmith     |
+    | shopname      |
+    | agdesignworks |
+    | docksmith     |
 
   Scenario Outline: Search for many articles by keyword
     Given I would like to buy a <article>
