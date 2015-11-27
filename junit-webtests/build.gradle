@@ -4,7 +4,7 @@ repositories {
 }
 
 ext{
-    serenity_version = "1.1.21"
+    serenity_version = "v1.1.22-rc.10"
 }
 
 buildscript {
@@ -13,7 +13,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.21")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:v1.1.22-rc.10")
     }
 }
 
@@ -32,6 +32,16 @@ dependencies {
     compile 'junit:junit:4.12'
     compile 'com.googlecode.lambdaj:lambdaj:2.3.3'
     compile 'org.assertj:assertj-core:3.1.0'
+}
+
+
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+    /* Pass all system properties: */
+    systemProperties System.getProperties()
 }
 
 gradle.startParameter.continueOnFailure = true
