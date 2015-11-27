@@ -46,7 +46,7 @@ public class ListingPage extends PageObject {
 
     public ListingItem getDisplayedListing() {
         String listingName = name.getText();
-        double listingPrice = Double.parseDouble(price.getText());
+        double listingPrice = Double.parseDouble(price.getText().replaceAll("[^0-9.,]+",""));
         return new ListingItem(listingName, listingPrice);
     }
 
