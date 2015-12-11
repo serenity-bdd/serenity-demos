@@ -3,6 +3,10 @@ package net.thucydides.showcase.junit.steps.serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.showcase.junit.model.Pet;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import static net.serenitybdd.rest.SerenityRest.rest;
@@ -27,6 +31,26 @@ public class PetStoreSteps {
 
         rest().given().contentType("application/json")
                 .content(jsonPet).post("http://petstore.swagger.io/v2/pet");
+
+        this.pet.setId(id);
+    }
+
+    @Step
+    public void when_i_add_the_pet_to_the_store_with_json_map(Pet pet) {
+        this.pet = pet;
+        int id = Math.abs(new Random().nextInt());
+        Map<String, Object> jsonAsMap = new HashMap<>();
+        jsonAsMap.put("id", id);
+        jsonAsMap.put("name", pet.getName());
+        jsonAsMap.put("status", pet.getStatus());
+        jsonAsMap.put("photoUrls", new ArrayList<>(Arrays.asList()));
+
+        this.jsonPet = "{\"id\": " + id + " , \"name\": \""
+            + pet.getName() + "\", \"photoUrls\": [], \"status\": \""
+            + pet.getStatus() + "\"}";
+
+        rest().given().contentType("application/json")
+            .content(jsonAsMap).post("http://petstore.swagger.io/v2/pet");
 
         this.pet.setId(id);
     }
