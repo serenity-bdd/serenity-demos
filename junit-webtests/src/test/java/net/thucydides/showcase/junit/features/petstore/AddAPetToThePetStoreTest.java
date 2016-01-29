@@ -35,4 +35,16 @@ public class AddAPetToThePetStoreTest {
 
         petStore.the_pets_should_be_not_available();
     }
+
+    @Test
+    public void shouldBeAbleDeletePetsFromAStoreUsingJsonMap() {
+
+        Pet fido = new Pet("available","fido");
+
+        petStore.when_i_add_the_pet_to_the_store_with_json_map(fido);
+
+        petStore.when_i_delete_the_pet();
+
+        petStore.the_pets_should_be_not_available();
+    }
 }

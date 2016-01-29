@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import static org.assertj.core.api.StrictAssertions.assertThat;
+
 @RunWith(SerenityRunner.class)
 public class DisplayProductDetailsTest {
     @Managed
@@ -31,6 +33,7 @@ public class DisplayProductDetailsTest {
         ListingItem selectedListingItem = buyer.selects_listing(1);
 
         buyer.should_see_product_details_for(selectedListingItem);
+        assertThat("asdf").isEqualTo("asdfasdf");
 
     }
 }
