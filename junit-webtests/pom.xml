@@ -12,8 +12,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.25-rc.2</serenity.version>
-        <serenity.maven.version>1.1.25-rc.2</serenity.maven.version>
+        <serenity.version>1.1.25-rc.3</serenity.version>
+        <serenity.maven.version>1.1.25-rc.3</serenity.maven.version>
         <tags></tags>
     </properties>
 
@@ -85,6 +85,8 @@
                 <version>2.18.1</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <parallel>classes</parallel>
+                    <threadCount>5</threadCount>
                 </configuration>
             </plugin>
             <plugin>
@@ -94,6 +96,8 @@
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
+                    <parallel>methods</parallel>     
+                    <threadCount>2</threadCount>
                     <reuseForks>true</reuseForks>
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                     <systemPropertyVariables>
@@ -126,7 +130,7 @@
                     <dependency>
                         <groupId>net.serenity-bdd</groupId>
                         <artifactId>serenity-core</artifactId>
-                        <version>1.1.25-rc.2</version>
+                        <version>1.1.25-rc.3</version>
                     </dependency>
                 </dependencies>
                 <executions>
