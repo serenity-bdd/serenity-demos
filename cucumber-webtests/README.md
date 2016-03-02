@@ -1,4 +1,4 @@
-## Automated web tests using Serenity, JBehave and Maven
+## Automated web tests using Serenity, Cucumber and Maven
 
 A simple example of some BDD-style automated acceptance criteria, running against http://etsy.com. 
 
