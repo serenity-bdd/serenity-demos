@@ -4,9 +4,9 @@ repositories {
 }
 
 ext{
-    serenity_version = "1.1.22-rc.11"
-    serenity_jbehave_version = "1.5.0"
-    serenity_cucumber_version = "1.1.2"
+    serenity_version = "1.1.31"
+    serenity_jbehave_version = "1.10.0"
+    serenity_cucumber_version = "1.1.6"
 }
 
 buildscript {
@@ -15,7 +15,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.22-rc.11")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.31")
     }
 }
 
@@ -31,7 +31,7 @@ dependencies {
     compile localGroovy()
     compile "net.serenity-bdd:serenity-core:$serenity_version"
     compile "net.serenity-bdd:serenity-junit:$serenity_version"
-    compile("net.serenity-bdd:serenity-journey:$serenity_version")
+    compile("net.serenity-bdd:serenity-screenplay:$serenity_version")
     compile("net.serenity-bdd:browse-the-web:$serenity_version")
     compile("net.serenity-bdd:serenity-cucumber:$serenity_cucumber_version")
     compile("net.serenity-bdd:serenity-jbehave:$serenity_jbehave_version")
