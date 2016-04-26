@@ -11,10 +11,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.22-rc.6</serenity.version>
-        <serenity.maven.version>1.1.22-rc.6</serenity.maven.version>
-        <serenity.cucumber.version>1.1.2</serenity.cucumber.version>
-        <serenity.jbehave.version>1.1.0</serenity.jbehave.version>
+        <serenity.version>1.1.31</serenity.version>
+        <serenity.maven.version>1.1.31</serenity.maven.version>
+        <serenity.cucumber.version>1.1.6</serenity.cucumber.version>
+        <serenity.jbehave.version>1.10.0</serenity.jbehave.version>
         <webdriver.driver>firefox</webdriver.driver>
         <parallel.tests>1</parallel.tests>
     </properties>
@@ -53,7 +53,7 @@
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-journey</artifactId>
+            <artifactId>serenity-screenplay</artifactId>
             <version>${serenity.version}</version>
         </dependency>
         <dependency>
@@ -105,22 +105,22 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18.1</version>
-                <configuration>
+                <!--configuration>
                     <skip>true</skip>
-                </configuration>
+                </configuration-->
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.18.1</version>
                 <configuration>
-                    <includes>
+                    <!--includes>
                         <include>**/features/**/*.java</include>
                         <include>**/jbehave/**/*.java</include>
                         <include>**/cucumber/*.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/*WithFailures.java</exclude>
-                    </excludes>
+                    </excludes-->
                     <argLine>-Xmx512m</argLine>
                     <!--<parallel>classes</parallel>-->
                     <!--<threadCount>${parallel.tests}</threadCount>-->
@@ -181,12 +181,12 @@
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>2.18.1</version>
                         <configuration>
-                            <includes>
+                            <!--includes>
                                 <include>**/features/**/*.java</include>
                                 <include>**/jbehave/**/*.java</include>
                                 <include>**/cucumber/*.java</include>
                                 <include>**/*WithFailures.java</include>
-                            </includes>
+                            </includes-->
                             <argLine>-Xmx512m</argLine>
                         </configuration>
                         <executions>
