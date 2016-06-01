@@ -1,8 +1,8 @@
 package net.thucydides.showcase.cucumber.pages;
 
 import net.serenitybdd.core.annotations.findby.By;
-import net.thucydides.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.pages.PageObject;
 import net.thucydides.showcase.cucumber.model.ListingItem;
 import net.thucydides.showcase.cucumber.model.OrderCostSummary;
 
@@ -35,9 +35,13 @@ public class CartPage extends PageObject {
 
     public static OrderCostSummary convertToOrderCostSummary(WebElementFacade summaryElement) {
         String name = summaryElement.find(By.tagName("h3")).getText();
-        double itemTotal = Double.parseDouble(summaryElement.findBy(".item-total .currency-value").getText());
-        double shipping = Double.parseDouble(summaryElement.findBy(".shipping .currency-value").getText());
-        double grandTotal = Double.parseDouble(summaryElement.findBy(".grand-total .currency-value").getText());
+        double itemTotal = parseDouble(summaryElement.findBy(".item-total .currency-value").getText());
+        double shipping = parseDouble(summaryElement.findBy(".shipping .currency-value").getText());
+        double grandTotal = parseDouble(summaryElement.findBy(".grand-total .currency-value").getText());
         return new OrderCostSummary(name, itemTotal, shipping, grandTotal);
+    }
+
+    private static double parseDouble(final String d) {
+        return Double.parseDouble(d.replaceAll("\\s", "").replaceAll(",", "."));
     }
 }

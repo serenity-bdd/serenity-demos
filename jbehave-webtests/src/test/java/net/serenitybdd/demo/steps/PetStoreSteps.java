@@ -1,6 +1,7 @@
 package net.serenitybdd.demo.steps;
 
 import com.google.common.collect.Lists;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.demo.model.Pet;
 import org.jbehave.core.annotations.Alias;
 import org.jbehave.core.annotations.Given;

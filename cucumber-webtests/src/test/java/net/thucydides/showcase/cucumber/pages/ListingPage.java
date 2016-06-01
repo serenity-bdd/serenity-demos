@@ -1,17 +1,16 @@
 package net.thucydides.showcase.cucumber.pages;
 
+import com.google.common.base.Splitter;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementState;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.serenitybdd.core.pages.WebElementState;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.showcase.cucumber.model.ListingItem;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 /**
  * Created by john on 12/11/14.
@@ -46,8 +45,13 @@ public class ListingPage extends PageObject {
 
     public ListingItem getDisplayedListing() {
         String listingName = name.getText();
-        double listingPrice = Double.parseDouble(price.getText());
+        double listingPrice = Double.parseDouble(numericalValueIn(price.getText()));
         return new ListingItem(listingName, listingPrice);
+    }
+
+    private String numericalValueIn(String text) {
+        text = text.replace("$","").replace("€","").replace("£","").replaceAll(",", ".");
+        return Splitter.on(" ").trimResults().splitToList(text).get(0);
     }
 
     public void addToCart() {

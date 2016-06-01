@@ -1,0 +1,47 @@
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+ext{
+    serenity_version = "1.1.25-rc.3"
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.25-rc.3")
+    }
+}
+
+apply plugin: "java"
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: "net.serenity-bdd.aggregator"
+
+dependencies {
+    compile localGroovy()
+    compile "net.serenity-bdd:serenity-core:$serenity_version"
+    compile "net.serenity-bdd:serenity-junit:$serenity_version"
+    compile("net.serenity-bdd:serenity-rest-assured:$serenity_version")
+    compile 'org.slf4j:slf4j-simple:1.7.12'
+    compile 'org.codehaus.groovy:groovy-all:2.3.10'
+    compile 'junit:junit:4.12'
+    compile 'com.googlecode.lambdaj:lambdaj:2.3.3'
+    compile 'org.assertj:assertj-core:3.1.0'
+}
+
+
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+    /* Pass all system properties: */
+    systemProperties System.getProperties()
+}
+
+gradle.startParameter.continueOnFailure = true

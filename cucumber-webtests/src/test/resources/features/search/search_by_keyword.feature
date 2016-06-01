@@ -1,5 +1,6 @@
 @component:ui
 @version:Release-2
+@issue:ETSY-102
 Feature: Search by keyword
   In order for buyers to find what they are looking for more efficiently
   As a seller
@@ -10,10 +11,14 @@ Feature: Search by keyword
     When I search for 'wool'
     Then I should see only articles related to 'wool'
 
-  Scenario: Search by shop name
+  Scenario Outline: Search by shop name
     Given I want to see articles from a particular shop
-    When I search by shop for 'docksmith'
-    Then I should find 1 shop called 'docksmith'
+    When I search by shop for '<shopname>'
+    Then I should find 1 shop called '<shopname>'
+  Examples:
+    | shopname      |
+    | agdesignworks |
+    | docksmith     |
 
   Scenario Outline: Search for many articles by keyword
     Given I would like to buy a <article>

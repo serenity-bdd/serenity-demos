@@ -6,6 +6,7 @@ import cucumber.api.java.en.When;
 import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.showcase.cucumber.model.ListingItem;
+import net.thucydides.showcase.cucumber.pages.HomePage;
 import net.thucydides.showcase.cucumber.steps.serenity.BuyerSteps;
 import static net.thucydides.showcase.cucumber.model.SessionVariables.SELECTED_LISTING;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,8 +16,13 @@ public class DisplayProductDetailsScenarioSteps {
     @Steps
     BuyerSteps buyer;
 
+    HomePage homePage;
+
     @Given("I have searched for '(.*)' in my region")
     public void givenIHaveSearchedFor(String searchTerm) {
+
+        homePage.open();
+
         buyer.opens_home_page();
         buyer.searches_by_keyword(searchTerm);
         buyer.filters_by_local_region();

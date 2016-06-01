@@ -37,7 +37,8 @@ public class BuyerSteps extends ScenarioSteps {
 
     @Step
     public void searches_for_shop_called(String shopName) {
-        homePage.searchForShopCalled(shopName);
+        //homePage.searchForShopCalled(shopName);
+        assertThat("Bla").containsIgnoringCase(shopName);
     }
 
     @Step

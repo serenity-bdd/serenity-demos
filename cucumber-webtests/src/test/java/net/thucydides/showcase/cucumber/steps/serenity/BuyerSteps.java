@@ -1,6 +1,5 @@
 package net.thucydides.showcase.cucumber.steps.serenity;
 
-import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import net.thucydides.showcase.cucumber.model.ListingItem;
@@ -42,8 +41,8 @@ public class BuyerSteps extends ScenarioSteps {
     }
 
     @Step
-    public void should_see_shop_search_result_summary_of(String expectedMessage) {
-        assertThat(searchResultsPage.getResultSummary()).isEqualToIgnoringCase(expectedMessage);
+    public void should_see_shop_search_result_summary_of(int count, String shopName) {
+        assertThat(searchResultsPage.getResultSummary()).containsIgnoringCase(String.valueOf(count)).containsIgnoringCase(shopName);
     }
 
     @Step

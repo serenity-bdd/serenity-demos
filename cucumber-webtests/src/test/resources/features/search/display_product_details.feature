@@ -1,5 +1,6 @@
 @version:Release-1
 @version:Sprint-1.2
+@issue:ETSY-101
 Feature: Display product details
   In order to encourage buyers to make a purchase
   As a seller

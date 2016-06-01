@@ -1,7 +1,6 @@
 package net.thucydides.showcase.cucumber.pages;
 
 import com.google.common.base.Function;
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
@@ -17,11 +16,11 @@ public class HomePage extends PageObject {
     @FindBy(css="button[value='Search']")
     WebElementFacade searchButton;
 
-    private final static String SHOP_SUGGESTION = "//div[@class='as-suggestion' and contains(.,'find shop names')]";
+    private final static String SHOP_SUGGESTION = "//div[@class='as-suggestion' and contains(.,'%s')]";
 
     public void enterSearchTerms(String keyword) {
         $("#search-query").type(keyword);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitForPresenceOf(By.xpath("//div[@class='as-suggestion'][contains(.,'" + keyword.toLowerCase() + "')]"));
+        withTimeoutOf(10, TimeUnit.SECONDS).waitForPresenceOf(By.xpath(String.format(SHOP_SUGGESTION, keyword.toLowerCase())));
         waitForKeywordToBeUpdatedTo(keyword);
     }
 
@@ -33,12 +32,7 @@ public class HomePage extends PageObject {
     }
 
     private Function<? super WebDriver, Boolean> keywordFieldIsUpdatedTo(String keyword) {
-        return new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver webDriver) {
-                return $("#search-query").getValue().equalsIgnoreCase(keyword);
-            }
-        };
+        return webDriver -> $("#search-query").getValue().equalsIgnoreCase(keyword);
     }
 
     public void search() {
@@ -47,7 +41,7 @@ public class HomePage extends PageObject {
 
     public void searchForShopCalled(String shopName) {
         enterSearchTerms(shopName);
-        $(SHOP_SUGGESTION).click();
+        $(String.format(SHOP_SUGGESTION, shopName)).click();
     }
 
     public void dismissLocationMessage() {
