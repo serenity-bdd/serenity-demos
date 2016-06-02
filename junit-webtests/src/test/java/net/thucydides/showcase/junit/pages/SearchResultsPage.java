@@ -22,7 +22,7 @@ public class SearchResultsPage extends PageObject {
     WebElementFacade regionalSettingsSaveButton;
 
     public String getSearchHeader() {
-        return $(".float-left .strong").getText();
+        return $("//div[@class='float-left']//span[@class='strong']").getText();
     }
 
     Pattern searchResultSummaryPattern = Pattern.compile("([\\d,]+) Results");
@@ -45,11 +45,12 @@ public class SearchResultsPage extends PageObject {
         String name = listingCard.findBy(".card-meta-row").getText();
         double price = Double.parseDouble(listingCard.findBy(".card-price").getText().split("\\s")[0].replace("$", "")
                 .replace("€", "")
+                .replace("£", "")
                 .replace(",", ""));
 
         listingCard.findBy(By.tagName("a")).click();
 
-        waitForTextToAppear("Item Details");
+        waitForTextToAppear("Item details");
 
         return new ListingItem(name, price);
     }
