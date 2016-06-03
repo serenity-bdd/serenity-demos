@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @DefaultUrl("https://www.etsy.com")
 public class HomePage extends PageObject {
 
-    @FindBy(css="button[value='Search']")
+    @FindBy(xpath="//button[@class='btn btn-primary']|//button[@value='Search']|//button[@class='btn btn-orange btn-append']")
     WebElementFacade searchButton;
 
     private final static String SHOP_SUGGESTION = "//div[@class='as-suggestion' and contains(.,'find shop names')]";
@@ -43,6 +43,8 @@ public class HomePage extends PageObject {
     }
 
     public void search() {
+    	withAction().moveToElement($("//button[@class='btn btn-primary']|//button[@value='Search']|//button[@class='btn btn-orange btn-append']")).perform();
+    	//without above step , click is not happening at all
         searchButton.click();
     }
 

@@ -33,7 +33,5 @@ public class DisplayProductDetailsTest {
         ListingItem selectedListingItem = buyer.selects_listing(1);
 
         buyer.should_see_product_details_for(selectedListingItem);
-        assertThat("asdf").isEqualTo("asdfasdf");
-
     }
 }
