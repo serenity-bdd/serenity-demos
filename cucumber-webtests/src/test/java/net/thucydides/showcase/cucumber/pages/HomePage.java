@@ -7,20 +7,24 @@ import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 @DefaultUrl("https://www.etsy.com")
 public class HomePage extends PageObject {
 
-    @FindBy(css="button[value='Search']")
+    @FindBy(xpath="//form[@id='search-bar']//button[@type='submit']")
     WebElementFacade searchButton;
 
-    private final static String SHOP_SUGGESTION = "//div[@class='as-suggestion' and contains(.,'%s')]";
-
+    private final static String SHOP_SUGGESTION = "//div[@id='search-suggestions']//div[@class='as-suggestion']//*[contains(.,'find shop names containing')]";
+    private final static String SHOP_SUGGESTION_SHOP_NAME = "//div[@id='search-suggestions']//div[@class='as-suggestion']/span[2]";
+    
     public void enterSearchTerms(String keyword) {
-        $("#search-query").type(keyword);
-        withTimeoutOf(10, TimeUnit.SECONDS).waitForPresenceOf(By.xpath(String.format(SHOP_SUGGESTION, keyword.toLowerCase())));
+    	$("#search-query").type(keyword);
+        new WebDriverWait(getDriver(),1).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(SHOP_SUGGESTION)));
+        //withTimeoutOf(10, TimeUnit.SECONDS).waitForPresenceOf(By.xpath(SHOP_SUGGESTION));
         waitForKeywordToBeUpdatedTo(keyword);
     }
 
@@ -41,7 +45,7 @@ public class HomePage extends PageObject {
 
     public void searchForShopCalled(String shopName) {
         enterSearchTerms(shopName);
-        $(String.format(SHOP_SUGGESTION, shopName)).click();
+        $(SHOP_SUGGESTION_SHOP_NAME).click();
     }
 
     public void dismissLocationMessage() {

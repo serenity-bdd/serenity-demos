@@ -5,6 +5,8 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.showcase.cucumber.model.ListingItem;
+
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.text.NumberFormat;
@@ -21,13 +23,13 @@ public class SearchResultsPage extends PageObject {
     WebElementFacade regionalSettingsSaveButton;
 
     public String getSearchHeader() {
-        return $(".float-left .strong").getText();
+        return $("//div[@class='float-left']//span[@class='strong']").getText();
     }
 
     Pattern searchResultSummaryPattern = Pattern.compile("([\\d,]+) Results");
 
     public String getResultSummary(){
-        return $(".summary").getText();
+        return $("//div[@id='search-header']/h1[@class='summary']").getText();
     }
 
     private int parse(String resultCount) {
@@ -38,18 +40,18 @@ public class SearchResultsPage extends PageObject {
         }
     }
 
+    //https://github.com/serenity-bdd/serenity-core/issues/459
     public ListingItem selectListing(int listingNumber) {
-        List<WebElementFacade> listingCards = findAll(By.cssSelector(".listing-card:nth-child(" + listingNumber + ")"));
-        WebElementFacade listingCard = listingCards.get(0);
-        String name = listingCard.findBy(".card-meta-row").getText();
-        double price = Double.parseDouble(listingCard.findBy(".card-price").getText().split("\\s")[0]
-                                                                           .replace("$","").replace(",","."));
+    	String name = getDriver().findElements(By.xpath("//div[@id='content']//div[@class='clearfix']//div[1]/a//div[contains(@class,'card-title')]")).get(listingNumber).getText();
+    	double price = Double.parseDouble( getDriver().findElements(By.xpath("//div[@id='content']//div[@class='clearfix']//div[1]/a//span[contains(@class,'currency text')]")).get(listingNumber).getText());
+    	
+    	List<WebElement> listingCards = getDriver().findElements(By.cssSelector(".listing-card:nth-child(" + listingNumber + ")"));
+        WebElement listingCard = listingCards.get(1);
+        
+        listingCard.findElement(By.tagName("a")).click();
+        waitForTextToAppear("Item details");
 
-        listingCard.findBy(By.tagName("a")).click();
-
-        waitForTextToAppear("Item Details");
-
-        return new ListingItem(name, price);
+        return new ListingItem(name,price);
     }
 
     public void filterByLocalRegion() {

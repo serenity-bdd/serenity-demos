@@ -20,7 +20,7 @@ public class CartPage extends PageObject {
     }
 
     public List<OrderCostSummary> getOrderCostSummaries() {
-        return findAll(".order-wrapper")
+    	return findAll(".cart-listing-list")
                 .stream()
                 .map(CartPage::convertToOrderCostSummary)
                 .collect(Collectors.toList());
@@ -34,10 +34,11 @@ public class CartPage extends PageObject {
     }
 
     public static OrderCostSummary convertToOrderCostSummary(WebElementFacade summaryElement) {
-        String name = summaryElement.find(By.tagName("h3")).getText();
-        double itemTotal = parseDouble(summaryElement.findBy(".item-total .currency-value").getText());
-        double shipping = parseDouble(summaryElement.findBy(".shipping .currency-value").getText());
-        double grandTotal = parseDouble(summaryElement.findBy(".grand-total .currency-value").getText());
+        String name = summaryElement.find(By.xpath("//div[@class='cart-listing-list']//a[contains(@class,'listing-title')]")).getText();
+        double itemTotal = Double.parseDouble(summaryElement.findBy("//div[@class='multi-shop-cart-payment']//tr[1]//span[@class='currency-value']").getText());
+        double shipping = Double.parseDouble(summaryElement.findBy("//tr//*[contains(., 'Shipping')]/following-sibling::td[1]//span[2]").getText());
+        double grandTotal = Double.parseDouble(summaryElement.findBy("//div[@class='multi-shop-cart-payment']//tr[6]//span[@class='currency-value'] | //div[@class='multi-shop-cart-payment']//tr[7]//span[@class='currency-value']").getText());
+        
         return new OrderCostSummary(name, itemTotal, shipping, grandTotal);
     }
 
