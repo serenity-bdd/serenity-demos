@@ -17,8 +17,8 @@ Feature: Search by keyword
     Then I should find 1 shop called '<shopname>'
   Examples:
     | shopname      |
-    | agdesignworks |
-    | docksmith     |
+    | SwankySips    |
+    | mymagicname   |
 
   Scenario Outline: Search for many articles by keyword
     Given I would like to buy a <article>
