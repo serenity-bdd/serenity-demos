@@ -1,0 +1,59 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.1")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+def cucumberVersion = "1.2.5"
+def serenityVersion = "1.1.1"
+
+repositories {
+	jcenter()
+}
+
+configurations {
+	cucumberRuntime {
+		extendsFrom testRuntime
+	}
+}
+
+task cucumber() {
+	dependsOn assemble
+	doLast {
+		javaexec {
+			main = "cucumber.api.cli.Main"
+			classpath = configurations.cucumberRuntime
+			args = ['--plugin', 'pretty', '--glue', 'src/test/java', 'src/test/resources']
+
+		}
+	}
+}
+
+//Ensure the cucumber tests are executed as part of the build. Makes for a very pretty output.
+build.dependsOn cucumber
+
+dependencies {
+	compile "net.serenity-bdd:serenity-core:$serenityVersion"
+	compile "net.serenity-bdd:serenity-cucumber:$serenityVersion"
+	compile("net.serenity-bdd:serenity-rest-assured:$serenityVersion")
+	
+
+	cucumberRuntime files("${jar.archivePath}")
+
+	compile 'junit:junit:4.12'
+	compile "info.cukes:cucumber-junit:$cucumberVersion"
+	compile "info.cukes:cucumber-java:$cucumberVersion"
+	compile "net.serenity-bdd:serenity-junit:$serenityVersion"
+	compile('org.slf4j:slf4j-simple:1.7.12')
+	compile 'com.googlecode.lambdaj:lambdaj:2.3.3'
+	compile 'org.assertj:assertj-core:3.1.0'
+	compile 'org.codehaus.groovy:groovy-all:2.3.10'
+}
+
+gradle.startParameter.continueOnFailure = true
