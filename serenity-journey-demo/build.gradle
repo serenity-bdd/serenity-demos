@@ -23,6 +23,5 @@ dependencies {
     compile 'net.serenity-bdd:serenity-cucumber:1.1.1'
     testCompile('junit:junit:4.12')
     compile('org.assertj:assertj-core:1.7.0')
-//    compile('com.googlecode.lambdaj:lambdaj:2.3.3')
 }
 gradle.startParameter.continueOnFailure = true
