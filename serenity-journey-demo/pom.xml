@@ -7,13 +7,14 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Sample Serenity project using Cucumber and WebDriver</name>
+    <name>Sample Serenity project using Cucumber and Screenplay</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.13</serenity.version>
-        <serenity.cucumber.version>1.1.1</serenity.cucumber.version>
-        <webdriver.driver>firefox</webdriver.driver>
+        <serenity.version>1.9.31</serenity.version>
+        <serenity.maven.version>1.9.31</serenity.maven.version>
+        <serenity.cucumber.version>1.9.12
+        </serenity.cucumber.version>
     </properties>
 
     <repositories>
@@ -45,12 +46,22 @@
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-journey</artifactId>
+            <artifactId>serenity-screenplay</artifactId>
             <version>${serenity.version}</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
-            <artifactId>browse-the-web</artifactId>
+            <artifactId>serenity-screenplay-webdriver</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-model</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-reports</artifactId>
             <version>${serenity.version}</version>
         </dependency>
         <dependency>

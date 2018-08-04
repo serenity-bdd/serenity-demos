@@ -4,7 +4,7 @@ import net.serenitybdd.demos.todos.pages.components.ToDoList;
 import net.serenitybdd.demos.todos.tasks.interactions.Hit;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
-import net.serenitybdd.screenplay.tasks.Enter;
+import net.serenitybdd.screenplay.actions.Enter;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.Keys;
 

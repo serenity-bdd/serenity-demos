@@ -8,13 +8,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Sample Serenity Cucumber project</name>
+    <name>Sample Serenity project using Cucumber and Serenity BDD</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <serenity.version>1.1.37-rc.6</serenity.version> <!-- https://bintray.com/serenity/maven/serenity-core/ -->
-        <serenity.maven.version>1.1.37-rc.6</serenity.maven.version>
-        <serenity.cucumber.version>1.1.9</serenity.cucumber.version> <!--  https://bintray.com/serenity/maven/serenity-cucumber/ -->
+        <serenity.version>1.9.31</serenity.version>
+        <serenity.maven.version>1.9.31</serenity.maven.version>
+        <serenity.cucumber.version>1.9.12</serenity.cucumber.version>
     </properties>
 
     <!-- Define the Bintray repos for convenience -->
@@ -51,6 +51,16 @@
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-model</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-reports</artifactId>
+            <version>${serenity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber</artifactId>
             <version>${serenity.cucumber.version}</version>
         </dependency>
@@ -76,6 +86,12 @@
             <version>1.7.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -89,8 +105,9 @@
                         <id>enforce</id>
                         <configuration>
                             <rules>
-                                <requireUpperBoundDeps/>
+                                <AlwaysPass/>
                             </rules>
+                            <fail>true</fail>
                         </configuration>
                         <goals>
                             <goal>enforce</goal>
@@ -142,11 +159,11 @@
                 <artifactId>serenity-maven-plugin</artifactId>
                 <version>${serenity.maven.version}</version>
                 <dependencies>
-                  <dependency>
-                    <groupId>net.serenity-bdd</groupId>
-                    <artifactId>serenity-core</artifactId>
-                    <version>${serenity.version}</version>
-                  </dependency>
+                    <dependency>
+                        <groupId>net.serenity-bdd</groupId>
+                        <artifactId>serenity-core</artifactId>
+                        <version>${serenity.version}</version>
+                    </dependency>
                 </dependencies>
                 <executions>
                     <execution>
