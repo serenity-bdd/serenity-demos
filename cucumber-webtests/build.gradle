@@ -3,15 +3,15 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.1")
+		classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.30")
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'net.serenity-bdd.aggregator'
 
-def cucumberVersion = "1.2.5"
-def serenityVersion = "1.1.1"
+def cucumberVersion = "1.9.22"
+def serenityVersion = "2.0.30"
 
 repositories {
 	jcenter()

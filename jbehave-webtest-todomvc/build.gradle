@@ -1,12 +1,14 @@
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Copy
+
 repositories {
     mavenLocal()
     jcenter()
 }
 
 ext{
-    serenity_version = "1.1.31"
-    serenity_jbehave_version = "1.10.0"
-    serenity_cucumber_version = "1.1.6"
+    serenity_version = "2.0.30"
+    serenity_jbehave_version = "1.44.0"
+    serenity_cucumber_version = "1.9.22"
 }
 
 buildscript {
@@ -15,7 +17,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:1.1.31")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.30")
     }
 }
 
