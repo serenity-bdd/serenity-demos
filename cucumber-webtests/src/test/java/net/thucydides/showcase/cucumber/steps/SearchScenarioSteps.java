@@ -44,10 +44,10 @@ public class SearchScenarioSteps {
         buyer.should_see_shop_search_result_summary_of(count, shopName);
     }
 
-    private String pluralized(int count, String word) {
+    /*private String pluralized(int count, String word) {
         return Inflector.getInstance().pluralize(word, count);
 
-    }
+    }*/
 }
 
 
